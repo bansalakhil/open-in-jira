@@ -12,8 +12,10 @@
   "background": {
     "scripts": [
       "context.js",
-      "options.js"
-    ]
+      "options.js",
+      "popup.js"
+    ],
+    "persistant": false
   },
   "content_scripts": [
     {
@@ -31,6 +33,10 @@
     "tabs",
     "storage"
   ],
+
+  "browser_action": {
+    "default_icon": "vinsol.png"
+  },
 
   "options_ui": {
     "page": "options.html",
