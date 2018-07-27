@@ -5,9 +5,9 @@
   "version": "1",
   "author": "Akhil Bansal",
   "icons": {
-    "16": "vinsol.png",
-    "48": "vinsol.png",
-    "128": "vinsol.png"
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
   },
   "background": {
     "scripts": [
@@ -35,7 +35,7 @@
   ],
 
   "browser_action": {
-    "default_icon": "vinsol.png"
+    "default_icon": "icon-128.png"
   },
 
   "options_ui": {
