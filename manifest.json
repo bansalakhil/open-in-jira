@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "jira Issue opener",
+  "description": "Open issue in jira",
+  "version": "1",
+  "author": "Akhil Bansal",
+  "icons": {
+    "16": "vinsol.png",
+    "48": "vinsol.png",
+    "128": "vinsol.png"
+  },
+  "background": {
+    "scripts": [
+      "context.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "jira.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "tabs"
+  ]
+}
