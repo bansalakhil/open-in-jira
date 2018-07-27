@@ -11,7 +11,8 @@
   },
   "background": {
     "scripts": [
-      "context.js"
+      "context.js",
+      "options.js"
     ]
   },
   "content_scripts": [
@@ -27,6 +28,12 @@
   "permissions": [
     "contextMenus",
     "activeTab",
-    "tabs"
-  ]
+    "tabs",
+    "storage"
+  ],
+
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
 }
