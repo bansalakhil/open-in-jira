@@ -1,4 +1,4 @@
-chrome.browserAction.onClicked.addListener(function(tab) {
+function jiraPopup(tab) {
 
     var jira_url, project_key;
 
@@ -17,5 +17,22 @@ chrome.browserAction.onClicked.addListener(function(tab) {
             alert("Please set jira url and default project key from extension options section.");
         }
     });
+
+}
+
+chrome.browserAction.onClicked.addListener(jiraPopup);
+
+
+
+chrome.commands.onCommand.addListener(function(command) {
+    console.log('Command:', command);
+
+    if (command === "open-in-jira-popup") {
+        jiraPopup();
+    }
+
+    if (command === "open-in-jira") {
+        openInJira();
+    }
 
 });
