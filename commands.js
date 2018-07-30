@@ -10,3 +10,12 @@ chrome.commands.onCommand.addListener(function(command) {
     }
 
 });
+
+
+
+chrome.omnibox.onInputEntered.addListener(function(input){
+  if(input){
+    openIssueInJira(input, true);
+  }
+})
+

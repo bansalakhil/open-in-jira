@@ -32,7 +32,7 @@ function openInJira(info, tab) {
 }
 
 
-function openIssueInJira(selection) {
+function openIssueInJira(selection, current_tab) {
 
     selection = selection.toString().replace(/\s+/g, '-').toLowerCase();
 
@@ -44,9 +44,18 @@ function openIssueInJira(selection) {
             url = items.jira_url + "/browse/" + selection;
 
         }
-        chrome.tabs.create({
-            url: url
-        });
+
+        if (current_tab) {
+            chrome.tabs.update({
+                url: url
+            });
+
+        }else{
+            chrome.tabs.create({
+                url: url
+            });
+
+        }
     });
 
 
