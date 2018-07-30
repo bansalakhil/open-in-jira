@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "jira Issue opener",
-  "description": "Open issue in jira",
-  "version": "1",
+  "name": "JIRA Issue Quick Open",
+  "description": "Open issue in JIRA by keyboard shortcut or by select/highlight and right click context menu.",
+  "version": "3",
   "author": "Akhil Bansal",
   "icons": {
     "16": "icon-16.png",
@@ -11,8 +11,10 @@
   },
   "background": {
     "scripts": [
-      "context.js",
       "options.js",
+      "commands.js",
+      "common.js",
+      "context.js",
       "popup.js"
     ],
     "persistant": false
@@ -34,19 +36,19 @@
     "storage"
   ],
   "browser_action": {
-    "default_icon": "icon-128.png"
+    "default_icon": "icon-128.png",
+    "default_popup": "popup.html"
   },
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
   },
   "commands": {
-    "open-in-jira-popup": {
+    "_execute_browser_action": {
       "suggested_key": {
         "default": "Alt+J",
         "mac": "Alt+J"
-      },
-      "description": "Open in Jira Popup"
+      }
     },
 
     "open-in-jira": {
