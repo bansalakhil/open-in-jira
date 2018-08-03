@@ -1,3 +1,7 @@
+const kMillisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+const kOneWeekAgo = (new Date).getTime() - kMillisecondsPerWeek;
+const kFourWeekAgo = (new Date).getTime() - (kMillisecondsPerWeek * 4) ;
+
 chrome.commands.onCommand.addListener(function(command) {
     console.log('Command:', command);
 
@@ -25,7 +29,7 @@ chrome.omnibox.onInputChanged.addListener(
   function(text, suggest) {
 
     var query = "atlassian.net " + text;
-    chrome.history.search({text: query}, function(items){
+    chrome.history.search({text: query, startTime: kFourWeekAgo}, function(items){
 
         var suggestions = [];
 

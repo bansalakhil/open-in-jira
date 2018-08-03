@@ -1,8 +1,11 @@
 // Saves options to chrome.storage
 function save_options() {
-    var project_key = document.getElementById('project_key').value;
-    var jira_url = document.getElementById('jira_url').value;
+    var project_key  = document.getElementById('project_key').value;
+    var jira_url     = document.getElementById('jira_url').value;
+    var recent_count = document.getElementById('recent_count').value;
+
     chrome.storage.sync.set({
+        recent_count: recent_count || 10,
         project_key: project_key,
         jira_url: jira_url
     }, function() {
@@ -23,6 +26,7 @@ function restore_options() {
     chrome.storage.sync.get(['project_key', 'jira_url'], function(items) {
         document.getElementById('project_key').value = items.project_key;
         document.getElementById('jira_url').value = items.jira_url;
+        document.getElementById('recent_count').value = items.recent_count;
     });
 }
 

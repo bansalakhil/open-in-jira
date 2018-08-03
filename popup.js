@@ -1,4 +1,7 @@
 // chrome.browserAction.onClicked.addListener(jiraPopup);
+const kMillisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+const kOneWeekAgo = (new Date).getTime() - kMillisecondsPerWeek;
+const kFourWeekAgo = (new Date).getTime() - (kMillisecondsPerWeek * 4) ;
 
 var jira_info         = document.getElementById('jira_info');
 var form_error        = document.getElementById('form_error');
@@ -9,7 +12,8 @@ var setup_instruction = document.getElementById('setup_instruction');
 var issue_form        = document.getElementById('issue_form');
 var recent_issues     = document.getElementById('recent_issues');
 var issue_seperator ='--##--';
-var jira_url, project_key;
+var jira_url, project_key, recent_count;
+
 // handle open button click
 open_btn.onclick = openIssue;
 
@@ -31,21 +35,28 @@ options_link.addEventListener('click', function() {
 });
 
 
-chrome.storage.sync.get({"issue_history": []}, function(items) {
-  var issues = items.issue_history;
+chrome.storage.sync.get(['recent_count'], function(items) {
+    recent_count = items.recent_count;
+// alert(recent_count)
+    chrome.history.search({text: 'atlassian.net', startTime: kFourWeekAgo, maxResults: Number(recent_count)}, function(items){
 
-  if (issues.length > 0 ) {
-    recent_issues.style.display = "block";
+      if(items.length > 1) { recent_issues.style.display = "block"; }
 
-    for (var i = issues.length - 1; i >= 0; i--) {
-      var a = issues[i].split(issue_seperator);
-      var issue_title = a[0];
-      var issue_url = a[1];
+        for (var i = 0; i < items.length; i++) {
+          var link_title = items[i].url  + "\nVisit count: " + items[i].visitCount + "\nLast Visit: " + (new Date(items[i].lastVisitTime)).toLocaleString();
+          recent_issues.innerHTML += "<p>\
+                                        <a title='"+ link_title +" ' target = '_blank' href = '"+items[i].url+"' style = 'text-decoration: none; color: #4a8efb; font-size: small;'>\
+                                        "+ items[i].title.split(' - JIRA')[0] + "\
+                                        </a>\
+                                      </p>";
+        }
+    })
 
-      recent_issues.innerHTML += "<p><a title='"+issue_title + ' - ' + issue_url +"' target = '_blank' href = '"+issue_url+"' style = 'text-decoration: none; color: #4a8efb; font-size: small;'>" + issue_title + "</a></p>"
-    }
-  }
 });
+
+
+
+
 
 
 

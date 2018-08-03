@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "JIRA Issue Quick Open",
   "description": "Open issue in JIRA by keyboard shortcut or by highlight and right click context menu. Omnibox. Recently visited issues.",
-  "version": "6",
+  "version": "10",
   "author": "Akhil Bansal",
   "icons": {
     "16": "icon-16.png",

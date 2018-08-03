@@ -34,8 +34,17 @@ function openInJira(info, tab) {
 
 
 function openIssueInJira(selection, current_tab) {
+    selection = selection.toString();
 
-    selection = selection.toString().replace(/\s+/g, '-').toLowerCase();
+    // if it is a url then open the url as it is
+    if (selection.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/)) {
+        chrome.tabs.create({
+            url: selection
+        });
+        return;
+    }
+
+    selection = selection.replace(/\s+/g, '-').toLowerCase();
 
     chrome.storage.sync.get(['project_key', 'jira_url'], function(items) {
 
