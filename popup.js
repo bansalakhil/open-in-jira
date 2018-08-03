@@ -38,7 +38,7 @@ options_link.addEventListener('click', function() {
 chrome.storage.sync.get(['recent_count'], function(items) {
     recent_count = items.recent_count;
 // alert(recent_count)
-    chrome.history.search({text: 'atlassian.net', startTime: kFourWeekAgo, maxResults: Number(recent_count)}, function(items){
+    chrome.history.search({text: 'atlassian.net', startTime: kFourWeekAgo, maxResults: (Number(recent_count) || 10)}, function(items){
 
       if(items.length > 1) { recent_issues.style.display = "block"; }
 
