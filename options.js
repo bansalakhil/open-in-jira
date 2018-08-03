@@ -23,7 +23,7 @@ function save_options() {
 // stored in chrome.storage.
 function restore_options() {
     // Use default value project_key = 'red' and jira_url = true.
-    chrome.storage.sync.get(['project_key', 'jira_url'], function(items) {
+    chrome.storage.sync.get(['project_key', 'jira_url', 'recent_count'], function(items) {
         document.getElementById('project_key').value = items.project_key;
         document.getElementById('jira_url').value = items.jira_url;
         document.getElementById('recent_count').value = items.recent_count;
