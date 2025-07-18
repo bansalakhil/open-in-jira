@@ -4,34 +4,30 @@
     <title></title>
   </head>
   <body>
-    <div  style = "min-width: 400px; min-height: 80px; background: #e2e2e2; border-radius: 10px; padding: 20px; ">
+    <div style="min-width: 400px; min-height: 80px; background: #e2e2e2; border-radius: 10px; padding: 20px;">
 
-      <div id = 'jira_info' style = "font-weight: bold">
+      <div id="jira_info" style="font-weight: bold">
 
       </div>
 
-
-
-      <div id = "issue_form" style="display:none; margin-top: 30px;">
-        <div id = 'form_error' style = "color: red; font-weight: bold; display: none;">
-          Please enter issue id.
+      <div id="issue_form" style="display:none; margin-top: 30px;">
+        <div id="form_error" style="color: red; font-weight: bold; display: none;">
+          Please enter issue ID.
         </div>
-        <p><label><b>Issue:</b> <input type="issue_id" id="issue_id" autocomplete="off"></label>&nbsp;<input type="submit" id="open_btn" value = 'Open'></p>
+        <p><label><b>Issue:</b> <input type="text" id="issue_id" autocomplete="off"></label>&nbsp;<input type="submit" id="open_btn" value="Open"></p>
         <p></p>
       </div>
 
-
-      <div id = "setup_instruction" style = "display:none;  font-weight: bold; color: red; text-align: center">
-        Please set jira url and default project key from extension <a href="#" id = "go-to-options">options</a> section.
+      <div id="setup_instruction" style="display:none; font-weight: bold; color: red; text-align: center">
+        Please set Jira URL and default project key from extension <a href="#" id="go-to-options">options</a> section.
       </div>
 
-      <div id = "recent_issues" style = "display: none; margin-top: 30px">
+      <div id="recent_issues" style="display: none; margin-top: 30px">
         <hr>
         <h4>Recently Visited</h4>
       </div>
 
     </div>
-    <script src = "common.js"></script>
-    <script src = "popup.js"></script>
+    <script src="popup.js"></script>
   </body>
 </html>
