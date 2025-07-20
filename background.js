@@ -12,7 +12,12 @@ chrome.commands.onCommand.addListener(function(command) {
     }
 
     if (command === "open-in-jira") {
-        openInJira();
+        // Get the active tab and then open in Jira
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            if (tabs[0]) {
+                openInJira(null, tabs[0]);
+            }
+        });
     }
 });
 
@@ -80,12 +85,20 @@ function jiraPopup(tab) {
 
 // Open in Jira function
 function openInJira(info, tab) {
+    executeScriptAndOpenJira(tab);
+}
+
+// Helper function to execute script and open Jira
+function executeScriptAndOpenJira(tab) {
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
         func: () => window.getSelection().toString()
     }, function(results) {
         if (results && results[0] && results[0].result) {
             openIssueInJira(results[0].result);
+        } else {
+            // If no text is selected, show the popup
+            jiraPopup();
         }
     });
 }

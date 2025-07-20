@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Jira Issue Quick Open",
   "description": "Open issue in Jira by keyboard shortcut or by highlight and right click context menu. Omnibox. Recently visited issues.",
-  "version": "12",
+  "version": "12.1",
   "author": "Akhil Bansal",
   "icons": {
     "16": "icon-16.png",
@@ -25,10 +25,10 @@
   "permissions": [
     "contextMenus",
     "activeTab",
-    "tabs",
     "storage",
     "history",
-    "scripting"
+    "scripting",
+    "tabs"
   ],
   "action": {
     "default_icon": "icon-128.png",
